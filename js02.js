@@ -7,7 +7,6 @@ function esAnioBisiesto( anio ){
     return anio%4===0;
 }
 
-
 function mostrarDias(){
     let mes = (document.getElementById("mes"));
     let anio = parseInt(document.getElementById("anio").value);
@@ -49,11 +48,16 @@ function calcularFecha(){
     let dia = parseInt(document.getElementById("dia").value);
     let mes = parseInt(document.getElementById("mes").value);
     let anio = parseInt(document.getElementById("anio").value);
+    let mostrarFecha = document.getElementById("fechaCompleta");
+
+    if(!dia || !mes || !anio){
+        mostrarFecha.textContent = "Fecha inválida";
+        return;
+    }
 
     let fecha = new Date(anio,mes-1,dia);
     let mensaje;
-    let mostrarFecha = document.getElementById("fechaCompleta");
-
+    
     if( mes >= 13 || mes <= 0 || dia > mostrarDias(  ) ){
         mostrarFecha.textContent = "Fecha inválida";
         return;
